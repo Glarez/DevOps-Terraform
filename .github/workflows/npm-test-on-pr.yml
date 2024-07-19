@@ -25,7 +25,7 @@ jobs:
         - name: Install dependencies
           run: npm install
         
-        - name: Linter (ESLint) 
+        - name: Where is it
           run: ls -alh
 
         - name: Linter (ESLint) 
