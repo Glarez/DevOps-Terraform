@@ -26,7 +26,7 @@ jobs:
           run: npm install
         
         - name: Linter (ESLint) 
-          run: pwd
+          run: ls -alh
 
         - name: Linter (ESLint) 
           run: npm run lint
