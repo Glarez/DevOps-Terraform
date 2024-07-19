@@ -9,6 +9,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./codebase
     strategy:
       matrix:
         node-versions: ['15.0.0', '16.0.0']
