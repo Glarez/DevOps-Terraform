@@ -20,4 +20,4 @@ jobs:
           with:
             node-version: ${{ matrix.node-versions }}
         - name: Install dependencies
-          run: npm install
+          run: npm ci
