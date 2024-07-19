@@ -16,23 +16,25 @@ jobs:
       matrix:
         node-versions: ['15.0.0', '16.0.0']
     steps:
-        - name: Checking code
-          uses: actions/checkout@v4
-        - name: Setting up Node
-          uses: actions/setup-node@v4
-          with:
-            node-version: ${{ matrix.node-versions }}
-        - name: Install dependencies
-          run: npm install
-        
-        - name: Where is it
-          run: ls -alh
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-versions }}
 
-        - name: Linter (ESLint) 
-          run: npm run lint
+      - name: Print working directory
+        run: pwd
 
-        - name: Test (Jest) CI
-          run: npm run test
-        
-        - name: Build
-          run: npm run build
+      - name: List contents of the working directory
+        run: ls -al
+
+      - name: Print package.json
+        run: cat package.json
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Linter (ESLint)
+        run: npm run lint
