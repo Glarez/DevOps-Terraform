@@ -1,0 +1,23 @@
+name: npm PR Test
+
+on:
+  pull_request:
+    types: [opened, reopened]
+    branches:
+      - dev
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-versions: ['15.0.0', '16.0.0']
+    steps:
+        - name: Checking code
+          uses: actions/checkout@v4
+        - name: Setting up Node
+          uses: actions/setup-node@v4
+          with:
+            node-version: ${{ matrix.node-versions }}
+        - name: Install dependencies
+          run: npm install
