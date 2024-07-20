@@ -10,7 +10,7 @@ on:
       - feature/**
 
 jobs:
-  test:
+  Testing:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -25,5 +25,10 @@ jobs:
         with:
           node-version: '15.0.1'
 
-      - name: Install dependencies
+      - name: Installing source dependencies
         run: npm install
+      - name: Linting code
+        run: npm run lint
+      - name: Formatting code
+        run: npm run test
+          
