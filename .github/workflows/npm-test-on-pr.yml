@@ -5,6 +5,9 @@ on:
     types: [opened, reopened]
     branches:
       - dev
+  push:
+    branches:
+      - feature/**
 
 jobs:
   test:
@@ -12,9 +15,7 @@ jobs:
     defaults:
       run:
         working-directory: ./codebase/rdicidr-0.1.0
-    strategy:
-      matrix:
-        node-versions: ['15.0.0', '16.0.0']
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -22,7 +23,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-versions }}
+          node-version: '15.0.0'
 
       - name: Install dependencies
         run: npm ci
