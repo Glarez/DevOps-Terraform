@@ -24,14 +24,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-versions }}
 
-      - name: List contents of the working directory
-        run: ls -al
-
-      - name: Print package.json
-        run: cat package.json
-
       - name: Install dependencies
-        run: npm install
-
-      - name: Linter (ESLint)
-        run: npm run lint
+        run: npm ci
