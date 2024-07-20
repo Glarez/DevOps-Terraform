@@ -10,7 +10,7 @@ on:
       - feature/**
 
 jobs:
-  Testing_Code:
+  Testing:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -30,5 +30,23 @@ jobs:
         run: npm run lint
       - name: Formatting code
         run: npm run test
+  
+  Building:
+    needs: Testing
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./codebase/rdicidr-0.1.0
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '15.0.1'
+
+      - name: Installing source dependencies
+        run: npm install
       - name: Building app
         run: npm run build
